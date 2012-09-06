@@ -1,13 +1,11 @@
 require "singleton"
 require "delegate"
 require "base64"
-require 'kconv' # Need for rubyntlm on Ruby 1.9
 require 'tzinfo'
 
 require "active_support/core_ext"
 require "nokogiri"
 require "httpclient"
-require "net/ntlm"
 
 require "exchanger/version"
 require "exchanger/config"

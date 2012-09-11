@@ -25,6 +25,10 @@ describe Exchanger::GetUserAvailability do
       @items.all?{ |i| i.class.name == "Exchanger::CalendarEvent" }.should be_true
     end
 
+    it "should response have merged free busy merged data" do
+      @response.merged_free_busy.should_not be_empty
+    end
+
     it "should calendar event item have valid attributes" do
       ["start_time", "end_time", "busy_type", "calendar_event_details"].each do |k|
         @items[0].attributes.keys.include?(k).should be_true

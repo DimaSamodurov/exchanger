@@ -1,7 +1,7 @@
 module Exchanger
   # Getting User Availability
   # 
-  # http://msdn.microsoft.com/en-us/library/aa494212(v=exchg.80)
+  # http://msdn.microsoft.com/en-us/library/aa564001%28EXCHG.80%29.aspx
   class GetUserAvailability < Operation
     class Request < Operation::Request
       attr_accessor :time_zone, :email_address, :start_time, :end_time, :freebusy_interval, :requested_view
@@ -58,12 +58,14 @@ module Exchanger
                   end
                 end
                 xml.send("m:MailboxDataArray") do
-                  xml.send("t:MailboxData") do
-                    xml.send("t:Email") do
-                      xml.send("t:Address", email_address)
+                  [email_address].flatten.each do |email_address|
+                    xml.send("t:MailboxData") do
+                      xml.send("t:Email") do
+                        xml.send("t:Address", email_address)
+                      end
+                      xml.send("t:AttendeeType", "Required")
+                      xml.send("t:ExcludeConflicts", "false")
                     end
-                    xml.send("t:AttendeeType", "Required")
-                    xml.send("t:ExcludeConflicts", "false")
                   end
                 end
                 xml.send("t:FreeBusyViewOptions") do
@@ -88,8 +90,18 @@ module Exchanger
           item_klass.new_from_xml(node)
         end
       end
+
       def merged_free_busy
         to_xml.xpath(".//t:MergedFreeBusy", NS).text()
+      end
+
+      def multiple_mailbox_items
+        to_xml.xpath("//m:FreeBusyResponseArray", NS).children.map do |node|
+          node.xpath(".//t:CalendarEventArray", NS).children.map do |node|
+            item_klass = Exchanger.const_get(node.name)
+            item_klass.new_from_xml(node)
+          end
+        end
       end
     end
   end

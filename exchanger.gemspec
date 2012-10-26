@@ -24,10 +24,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rake"
   s.add_development_dependency "i18n" # required by activesupport
   s.add_development_dependency "rspec", ["~> 2.6.0"]
-  s.add_development_dependency "rcov"
   s.add_development_dependency "yard"
   s.add_development_dependency "BlueCloth" # required by yard
   s.add_development_dependency "tzinfo"
+  s.add_development_dependency "timecop"
 
   s.files          = Dir.glob("{lib,spec}/**/*") + %w(README.md LICENSE)
   s.require_paths  = ["lib"]

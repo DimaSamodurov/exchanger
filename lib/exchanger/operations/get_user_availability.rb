@@ -40,7 +40,15 @@ module Exchanger
                   xml.send("t:Bias", (minutes_of_utc_offset * -1))
                   # if daylight savings time is active for current time zone
                   # How to find correct standard time and daylight saving time configuration
-                  if current_tz.dst?
+
+                  # StandardTime (and) DaylightTime are required parts of TimeZone.
+                  # If we don't provide this info we will get error:
+                  #   The request failed schema validation: The element 'TimeZone' in namespace
+                  #   'http://schemas.microsoft.com/exchange/services/2006/types' has incomplete content.
+                  #   List of possible elements expected: 'StandardTime' in namespace
+                  #   'http://schemas.microsoft.com/exchange/services/2006/types'.
+                  # TODO calculate standard time and daylight saving time configuration for current period
+                  #if current_tz.dst?
                     xml.send("t:StandardTime") do
                       xml.send("t:Bias", 0)
                       xml.send("t:Time", "04:00:00")
@@ -52,10 +60,10 @@ module Exchanger
                       xml.send("t:Bias", (minutes_of_std_offset * -1))
                       xml.send("t:Time", "03:00:00")
                       xml.send("t:DayOrder", 5)
-                      xml.send("t:Month", 3)
+                      xml.send("t:Month", 3) # current_tz.end_transition.at.mon
                       xml.send("t:DayOfWeek", "Sunday")
                     end
-                  end
+                  #end
                 end
                 xml.send("m:MailboxDataArray") do
                   [email_address].flatten.each do |email_address|

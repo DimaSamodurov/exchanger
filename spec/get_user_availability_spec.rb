@@ -43,5 +43,27 @@ describe Exchanger::GetUserAvailability do
         response.items[0].calendar_event_details.attributes.keys.include?(k).should be_true
       end
     end
+
+    it "should retrieve data both at Standard Time and Daylight Saving Time periods" do
+      verify_request = lambda {
+        timezone = 'Europe/Helsinki'
+        #tz = TZInfo::Timezone.get(timezone).current_period
+        #p [tz.dst?, tz.start_transition.at.to_datetime, p tz.end_transition.at.to_datetime].inspect
+        attributes = valid_attributes.dup
+        attributes['time_zone'] = timezone
+        attributes['start_time'] = Time.now
+        attributes['end_time'] = Time.now.advance(:days => 1)
+        resp = Exchanger::GetUserAvailability.run(attributes)
+        resp.status.should == 200
+      }
+
+      Timecop.travel '2012-06-30' do # summer, Daylight Saving Time
+        verify_request.call
+      end
+
+      Timecop.travel '2012-12-31' do # winter, Standard Time
+        verify_request.call
+      end
+    end
   end
 end

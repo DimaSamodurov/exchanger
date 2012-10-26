@@ -2,6 +2,7 @@ require "singleton"
 require "delegate"
 require "base64"
 require 'tzinfo'
+require 'exchanger/tzinfo/time_or_date_time'
 
 require "active_support/core_ext"
 require "nokogiri"

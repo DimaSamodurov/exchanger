@@ -65,5 +65,19 @@ describe Exchanger::GetUserAvailability do
         verify_request.call
       end
     end
+
+    it "should read valid xml with indentation" do
+      Exchanger::Client.any_instance.stub(:request).and_return(
+          {
+              status: 200,
+              contenttype: "text/xml; charset=utf-8",
+              body: IO.read(File.expand_path("../fixtures/get_user_availability_response.xml" , __FILE__))
+          }
+      )
+
+      response = Exchanger::GetUserAvailability.run
+      free_busy_response_array = response.multiple_mailbox_items
+      free_busy_response_array.should_not be_empty
+    end
   end
 end

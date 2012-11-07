@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Header>
+    <h:ServerVersionInfo MajorVersion="14" MinorVersion="2" MajorBuildNumber="318" MinorBuildNumber="2"
+                         xmlns:h="http://schemas.microsoft.com/exchange/services/2006/types"
+                         xmlns="http://schemas.microsoft.com/exchange/services/2006/types"
+                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                         xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </s:Header>
+  <s:Body xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <GetUserAvailabilityResponse xmlns="http://schemas.microsoft.com/exchange/services/2006/messages">
+      <FreeBusyResponseArray>
+        <FreeBusyResponse>
+          <ResponseMessage ResponseClass="Success">
+            <ResponseCode>NoError</ResponseCode>
+          </ResponseMessage>
+          <FreeBusyView>
+            <FreeBusyViewType xmlns="http://schemas.microsoft.com/exchange/services/2006/types">DetailedMerged
+            </FreeBusyViewType>
+            <MergedFreeBusy xmlns="http://schemas.microsoft.com/exchange/services/2006/types">
+              0000
+            </MergedFreeBusy>
+            <CalendarEventArray xmlns="http://schemas.microsoft.com/exchange/services/2006/types">
+              <CalendarEvent>
+                <StartTime>2012-10-09T13:00:00</StartTime>
+                <EndTime>2012-10-09T13:30:00</EndTime>
+                <BusyType>Busy</BusyType>
+                <CalendarEventDetails>
+                  <ID>
+                    00000000723
+                  </ID>
+                  <Subject>Integration - questions</Subject>
+                  <Location>Conf call</Location>
+                  <IsMeeting>true</IsMeeting>
+                  <IsRecurring>false</IsRecurring>
+                  <IsException>false</IsException>
+                  <IsReminderSet>true</IsReminderSet>
+                  <IsPrivate>false</IsPrivate>
+                </CalendarEventDetails>
+              </CalendarEvent>
+              <CalendarEvent>
+                <StartTime>2012-10-10T09:00:00</StartTime>
+                <EndTime>2012-10-10T09:30:00</EndTime>
+                <BusyType>Busy</BusyType>
+                <CalendarEventDetails>
+                  <ID>
+                    000000007231
+                  </ID>
+                  <Subject>Check report delivery</Subject>
+                  <Location/>
+                  <IsMeeting>false</IsMeeting>
+                  <IsRecurring>true</IsRecurring>
+                  <IsException>false</IsException>
+                  <IsReminderSet>true</IsReminderSet>
+                  <IsPrivate>false</IsPrivate>
+                </CalendarEventDetails>
+              </CalendarEvent>
+              <CalendarEvent>
+                <StartTime>2012-10-11T17:00:00</StartTime>
+                <EndTime>2012-10-11T18:00:00</EndTime>
+                <BusyType>Tentative</BusyType>
+                <CalendarEventDetails>
+                  <ID>
+                    000000007232
+                  </ID>
+                  <Subject>Technology Talks - Librarian</Subject>
+                  <Location>Room2</Location>
+                  <IsMeeting>true</IsMeeting>
+                  <IsRecurring>false</IsRecurring>
+                  <IsException>false</IsException>
+                  <IsReminderSet>true</IsReminderSet>
+                  <IsPrivate>false</IsPrivate>
+                </CalendarEventDetails>
+              </CalendarEvent>
+              <CalendarEvent>
+                <StartTime>2012-10-15T14:30:00</StartTime>
+                <EndTime>2012-10-15T15:00:00</EndTime>
+                <BusyType>Busy</BusyType>
+                <CalendarEventDetails>
+                  <ID>
+                    123
+                  </ID>
+                  <Subject>Backlog grooming</Subject>
+                  <Location>Conf call</Location>
+                  <IsMeeting>true</IsMeeting>
+                  <IsRecurring>true</IsRecurring>
+                  <IsException>false</IsException>
+                  <IsReminderSet>true</IsReminderSet>
+                  <IsPrivate>false</IsPrivate>
+                </CalendarEventDetails>
+              </CalendarEvent>
+            </CalendarEventArray>
+            <WorkingHours xmlns="http://schemas.microsoft.com/exchange/services/2006/types">
+              <TimeZone>
+                <Bias>-120</Bias>
+                <StandardTime>
+                  <Bias>0</Bias>
+                  <Time>04:00:00</Time>
+                  <DayOrder>5</DayOrder>
+                  <Month>10</Month>
+                  <DayOfWeek>Sunday</DayOfWeek>
+                </StandardTime>
+                <DaylightTime>
+                  <Bias>-60</Bias>
+                  <Time>03:00:00</Time>
+                  <DayOrder>5</DayOrder>
+                  <Month>3</Month>
+                  <DayOfWeek>Sunday</DayOfWeek>
+                </DaylightTime>
+              </TimeZone>
+              <WorkingPeriodArray>
+                <WorkingPeriod>
+                  <DayOfWeek>Monday Tuesday Wednesday Thursday Friday</DayOfWeek>
+                  <StartTimeInMinutes>420</StartTimeInMinutes>
+                  <EndTimeInMinutes>1080</EndTimeInMinutes>
+                </WorkingPeriod>
+              </WorkingPeriodArray>
+            </WorkingHours>
+          </FreeBusyView>
+        </FreeBusyResponse>
+        <FreeBusyResponse>
+          <ResponseMessage ResponseClass="Success">
+            <ResponseCode>NoError</ResponseCode>
+          </ResponseMessage>
+          <FreeBusyView>
+            <FreeBusyViewType xmlns="http://schemas.microsoft.com/exchange/services/2006/types">DetailedMerged
+            </FreeBusyViewType>
+            <MergedFreeBusy xmlns="http://schemas.microsoft.com/exchange/services/2006/types">
+              0000000000202
+            </MergedFreeBusy>
+            <CalendarEventArray xmlns="http://schemas.microsoft.com/exchange/services/2006/types">
+              <CalendarEvent>
+                <StartTime>2012-10-01T09:30:00</StartTime>
+                <EndTime>2012-10-14T10:00:00</EndTime>
+                <BusyType>Free</BusyType>
+                <CalendarEventDetails>
+                  <IsMeeting>false</IsMeeting>
+                  <IsRecurring>false</IsRecurring>
+                  <IsException>false</IsException>
+                  <IsReminderSet>false</IsReminderSet>
+                  <IsPrivate>true</IsPrivate>
+                </CalendarEventDetails>
+              </CalendarEvent>
+              <CalendarEvent>
+                <StartTime>2012-10-09T11:30:00</StartTime>
+                <EndTime>2012-10-09T11:45:00</EndTime>
+                <BusyType>Busy</BusyType>
+                <CalendarEventDetails>
+                  <ID>
+                    0000000012F
+                  </ID>
+                  <Subject>Web CC daily stand-up</Subject>
+                  <Location>Room3</Location>
+                  <IsMeeting>true</IsMeeting>
+                  <IsRecurring>true</IsRecurring>
+                  <IsException>false</IsException>
+                  <IsReminderSet>true</IsReminderSet>
+                  <IsPrivate>false</IsPrivate>
+                </CalendarEventDetails>
+              </CalendarEvent>
+              <CalendarEvent>
+                <StartTime>2012-10-09T13:30:00</StartTime>
+                <EndTime>2012-10-09T17:00:00</EndTime>
+                <BusyType>Busy</BusyType>
+                <CalendarEventDetails>
+                  <ID>
+                    0000000012F2
+                  </ID>
+                  <Subject>Web CC Sprint Meetings</Subject>
+                  <Location>Room4</Location>
+                  <IsMeeting>true</IsMeeting>
+                  <IsRecurring>true</IsRecurring>
+                  <IsException>false</IsException>
+                  <IsReminderSet>true</IsReminderSet>
+                  <IsPrivate>false</IsPrivate>
+                </CalendarEventDetails>
+              </CalendarEvent>
+              <CalendarEvent>
+                <StartTime>2012-10-09T14:30:00</StartTime>
+                <EndTime>2012-10-09T15:30:00</EndTime>
+                <BusyType>OOF</BusyType>
+                <CalendarEventDetails>
+                  <IsMeeting>false</IsMeeting>
+                  <IsRecurring>false</IsRecurring>
+                  <IsException>false</IsException>
+                  <IsReminderSet>false</IsReminderSet>
+                  <IsPrivate>true</IsPrivate>
+                </CalendarEventDetails>
+              </CalendarEvent>
+              <CalendarEvent>
+                <StartTime>2012-10-09T14:30:00</StartTime>
+                <EndTime>2012-10-09T16:00:00</EndTime>
+                <BusyType>Tentative</BusyType>
+                <CalendarEventDetails>
+                  <ID>
+                    0000000012F4
+                  </ID>
+                  <Subject>All-Hands Q3</Subject>
+                  <Location>Room5</Location>
+                  <IsMeeting>true</IsMeeting>
+                  <IsRecurring>false</IsRecurring>
+                  <IsException>false</IsException>
+                  <IsReminderSet>true</IsReminderSet>
+                  <IsPrivate>false</IsPrivate>
+                </CalendarEventDetails>
+              </CalendarEvent>
+              <CalendarEvent>
+                <StartTime>2012-10-09T16:00:00</StartTime>
+                <EndTime>2012-10-09T17:00:00</EndTime>
+                <BusyType>OOF</BusyType>
+                <CalendarEventDetails>
+                  <IsMeeting>false</IsMeeting>
+                  <IsRecurring>false</IsRecurring>
+                  <IsException>false</IsException>
+                  <IsReminderSet>false</IsReminderSet>
+                  <IsPrivate>true</IsPrivate>
+                </CalendarEventDetails>
+              </CalendarEvent>
+            </CalendarEventArray>
+            <WorkingHours xmlns="http://schemas.microsoft.com/exchange/services/2006/types">
+              <TimeZone>
+                <Bias>-60</Bias>
+                <StandardTime>
+                  <Bias>0</Bias>
+                  <Time>03:00:00</Time>
+                  <DayOrder>5</DayOrder>
+                  <Month>10</Month>
+                  <DayOfWeek>Sunday</DayOfWeek>
+                </StandardTime>
+                <DaylightTime>
+                  <Bias>-60</Bias>
+                  <Time>02:00:00</Time>
+                  <DayOrder>5</DayOrder>
+                  <Month>3</Month>
+                  <DayOfWeek>Sunday</DayOfWeek>
+                </DaylightTime>
+              </TimeZone>
+              <WorkingPeriodArray>
+                <WorkingPeriod>
+                  <DayOfWeek>Monday Tuesday Wednesday Thursday Friday</DayOfWeek>
+                  <StartTimeInMinutes>570</StartTimeInMinutes>
+                  <EndTimeInMinutes>930</EndTimeInMinutes>
+                </WorkingPeriod>
+              </WorkingPeriodArray>
+            </WorkingHours>
+          </FreeBusyView>
+        </FreeBusyResponse>
+      </FreeBusyResponseArray>
+    </GetUserAvailabilityResponse>
+  </s:Body>
+</s:Envelope>

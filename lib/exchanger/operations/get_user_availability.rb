@@ -105,11 +105,13 @@ module Exchanger
 
       def multiple_mailbox_items
         to_xml.xpath("//m:FreeBusyResponseArray", NS).children.map do |node|
+          next if Exchanger::Element.blank_node?(node)
           node.xpath(".//t:CalendarEventArray", NS).children.map do |node|
+            next if Exchanger::Element.blank_node?(node)
             item_klass = Exchanger.const_get(node.name)
             item_klass.new_from_xml(node)
-          end
-        end
+          end.compact
+        end.compact
       end
     end
   end

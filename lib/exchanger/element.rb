@@ -71,6 +71,11 @@ module Exchanger
       str
     end
 
+    # @return true if node is a text node and content is blank. Used to skip nodes caused by xml formatting indentation.
+    def self.blank_node?(node)
+      node.name == 'text' && node.text.strip.blank?
+    end
+
     def self.new_from_xml(xml)
       object = new
       # Keys

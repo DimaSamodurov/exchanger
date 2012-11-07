@@ -130,7 +130,14 @@ module Exchanger
       elsif type == Integer
         node.text.to_i unless node.text.empty?
       elsif type == Time
-        Time.xmlschema(node.text) unless node.text.empty?
+        time_string = node.text
+        unless time_string.empty?
+          if (/(Z|[+-]\d\d:\d\d)/ =~ time_string) || Time.zone.blank?
+            Time.xmlschema(time_string).in_time_zone
+          else
+            Time.zone.parse(node.text)
+          end
+        end
       else
         node.text
       end

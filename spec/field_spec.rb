@@ -87,8 +87,65 @@ describe Exchanger::Field do
       @field.to_xml(@date_time_sent).to_s.gsub(/\n\s*/, "").should == @xml.to_s.gsub(/\n\s*/, "")
     end
 
-    it "should convert XML to value" do
-      @field.value_from_xml(@xml).should == @date_time_sent
+    describe "value_from_xml" do
+      it "should convert XML to value" do
+        @field.value_from_xml(@xml).should == @date_time_sent
+      end
+
+      context "if zone offset is NOT specified in the xml string"  do
+        before do
+          @time_string_without_zone = '2010-05-21T05:55:55'
+          @xml.stub(:text).and_return(@time_string_without_zone)
+        end
+
+        it "should use Time.zone if set (not the system time zone)" do
+          ActiveSupport::TimeZone::MAPPING.values.uniq.each do |current_zone|
+            Time.use_zone(current_zone) do
+              time = @field.value_from_xml(@xml)
+              time.should == Time.zone.parse(@time_string_without_zone)
+              time.time_zone.name.should == current_zone
+            end
+          end
+        end
+
+        it "should use system time zone if Time.zone is not set" do
+          Time.use_zone(nil) do
+            time = @field.value_from_xml(@xml)
+            time.zone.should == Time.parse(@time_string_without_zone).zone
+          end
+        end
+      end
+
+      context "if zone offset IS specified in the xml string"  do
+        context "and Time.zone is set" do
+          it "should use Time.zone and time is shifted by the offset value" do
+            cet_time_string = '2010-05-21T05:55:55+01:00'
+            utc_time = Time.utc(2010, 05, 21, 04, 55, 55)
+            @xml.stub(:text).and_return(cet_time_string)
+
+            ActiveSupport::TimeZone::MAPPING.values.uniq.each do |current_zone|
+              Time.use_zone(current_zone) do
+                time = @field.value_from_xml(@xml)
+                time.should == utc_time.in_time_zone
+                time.time_zone.name.should == current_zone
+              end
+            end
+          end
+        end
+
+        context "and Time.zone is not set" do
+          it "should use system Time.zone and time is shifted by the offset value" do
+            cet_time_string = '2010-05-21T05:55:55+01:00'
+            utc_time = Time.utc(2010, 05, 21, 04, 55, 55)
+            @xml.stub(:text).and_return(cet_time_string)
+
+            Time.use_zone(nil) do
+              time = @field.value_from_xml(@xml)
+              time.should == Time.parse(cet_time_string).localtime
+            end
+          end
+        end
+      end
     end
   end
 
